@@ -1,0 +1,136 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!-- Tree view  -->
+    <record model="ir.ui.view" id="shop_management_tree">
+      <field name="name">shop_management_tree</field>
+      <field name="model">shop.management</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="product_name"/>
+          <field name="product_price"/>
+          <field name="product_note"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- form view -->
+      <record model="ir.ui.view" id="shop_management_form">
+          <field name="name">shop_management_form</field>
+          <field name="model">shop.management</field>
+          <field name="arch" type="xml">
+            <form>
+                <header>
+                  <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary" type="object"></button>
+                  <button id="button_done" name="action_done" string="Done" class="btn-primary" type="object"></button>
+                  <field name="state" widget="statusbar"></field>
+                </header>
+              <sheet>
+                <group>
+                     <field name="product_img" widget="image" class="oe_avatar"/>
+                    <field name="product_name"/>
+                    <field name="product_price"/>
+                    <field name="product_note"/>
+                    
+                </group>
+                <!-- note book -->
+                 <notebook>
+                    <page string="Note" name="shop page"> 
+                        <group>
+                          <field name="page_note"/>
+                        </group>
+                    </page>
+                 </notebook> 
+                 <!-- end of note book -->
+              </sheet>
+              <!-- chatter part  -->
+                <div class="oe_chatter">
+
+                  <field name="message_follower_ids"/>
+                  <field name="activity_ids"/>
+                  <field name="message_ids"/>
+
+                </div>
+
+              <!-- end of chatter -->
+            </form>
+          </field>
+      </record>
+
+      <!-- search view  -->
+
+      <record model="ir.ui.view" id="shop_management_search">
+          <field name="name">shop_management_search</field>
+          <field name="model">shop.management</field>
+          <field name="arch" type="xml">
+            <search>
+             
+                    <!-- <field name="product_img" widget="image" class="oe_avatar"/> -->
+                    <field name="product_name"/>
+                    <field name="product_price"/>
+                    <field name="product_note"/>
+                    
+                
+            </search>
+          </field>
+      </record>
+<!-- search view end  -->
+      <!-- graph view  -->
+
+      <record model="ir.ui.view" id="shop_management_graph">
+          <field name="name">shop_management_graph</field>
+          <field name="model">shop.management</field>
+          <field name="type">graph</field>
+          <field name="arch" type="xml">
+            <graph string="shop" type="bar">
+             
+                    <!-- <field name="product_img" widget="image" class="oe_avatar"/> -->
+                    <field name="product_name"/>
+                    <field name="product_price"/>
+                    <field name="product_note"/>
+                    
+                
+            </graph>
+          </field>
+      </record>
+      <!-- graph view end  -->
+
+
+      <!-- pivot view  -->
+      <record model="ir.ui.view" id="shop_management_pivot">
+        <field name="name">shop_management_pivot</field>
+        <field name="model">shop.management</field>
+       
+        <field name="arch" type="xml">
+          <pivot string="shop management">
+           
+                  <!-- <field name="product_img" widget="image" class="oe_avatar"/> -->
+                  <field name="product_name"/>
+                  <field name="product_price"/>
+                  <field name="product_note"/>
+                  
+              
+          </pivot>
+        </field>
+    </record>
+ <!-- pivot view  end -->
+ 
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="shop_management_action">
+      <field name="name">Shop Management</field>
+      <field name="res_model">shop.management</field>
+      <field name="view_mode">tree,form,graph,pivot</field>
+    </record>
+
+
+    <menuitem
+      id="shop_management_root_menu"
+      name="Shop Management"
+      action="shop_management_action"
+      sequence="1"/>
+
+  
+  </data>
+</odoo>

@@ -1,0 +1,49 @@
+<odoo>
+    <record id="menue_shop" model="website.menu">
+		<field name="name">Our Product</field>
+		<field name="url">/shop</field>
+		<field name="parent_id" ref="website.main_menu" />
+	</record>
+	<template id="template_shop_web" name="Product List">
+			<t t-call="website.layout">
+				<div class="container">
+					<div id="wrap" class="oe_structure oe_empty">
+						<section class="s_picture pt-5 pb-5 o_cc o_cc2 o_colored_level" data-snippet="s_picture" data-name="Picture" t-att-style="'background-image: none;'">
+							<div class="container">
+								<h1 class="text-center">
+									Our Product
+								</h1>
+								<div class="row mt-2 mx-2">
+									<t t-foreach="shops" t-as="shop" t-if="shop">
+										<div class="col-md-4 mt-5">
+											<div class="card">
+												<img t-att-src="'/web/image/shop.management/' + str(shop.id) + '/product_img'" class="card-img-top" alt="" loading="lazy" style="width: 600px; height: 300px;" />
+												<div class="card-body">
+													<h2 class="card-title" style="font-weight: bold; font-size: 30px;" t-esc="shop.product_name">
+													</h2>
+													<p class="card-text" style="font-size: 18px;" t-esc="shop.product_note">
+													</p>
+													<p class="card-text" style="font-size: 16px;" t-esc="'Price: ' + str(shop.product_price)">
+													</p>
+													<!-- <a t-attf-href="/customer/details/{{shop.id}}" t-attf-data-image-url="shop.image_url" t-attf-shop-name="{{shop.name}}" t-attf-shop-price="{{shop.price}}" class="btn btn-primary">
+														Order shop
+													</a> -->
+												</div>
+											</div>
+										</div>
+									</t>
+									<t t-if="not shops">
+										<div class="col-lg-12 mb-4">
+											<p>
+												No shops to display
+											</p>
+										</div>
+									</t>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</t>
+    </template>
+</odoo>
