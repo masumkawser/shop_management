@@ -27,6 +27,13 @@
                   <field name="state" widget="statusbar"></field>
                 </header>
               <sheet>
+                <!-- priority widget -->
+                  <div class="oe_title">
+                      <h1>
+                        <field name="priority" widget="priority" class="mr-3"></field>
+                      </h1>
+                  </div>
+                  <!-- priority widget -->
                 <group>
                      <field name="product_img" widget="image" class="oe_avatar"/>
                     <field name="product_name"/>
